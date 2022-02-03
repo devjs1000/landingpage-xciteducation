@@ -1,8 +1,27 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { context } from "../context/mainContext";
+import { useSelector, useDispatch } from "react-redux";
+import { stateChangeLogin } from "../firebase/fire";
+import { accountAction } from "../redux/actions/loginAction";
+
 export default function Navbar() {
   const ctx = useContext(context);
+  const accountDetails=useSelector((state:any)=>state.account)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    stateChangeLogin((user:any)=>{
+      if(user){
+console.log('logged');
+dispatch(accountAction(user))
+
+      }else{
+        console.log('not logged');
+        dispatch(accountAction({}))
+
+      }
+    })
+  }, [])
   return (
     <nav className="flex justify-between mx-2 py-2 shadow-lg" style={{zIndex:'1001 !important'}}>
       <h1
