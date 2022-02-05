@@ -1,34 +1,40 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import AddTeam from '../components/AddTeam'
-import { getFromFirestore, stateChangeLogin } from '../firebase/fire';
-import TeamDisplay from '../components/TeamDisplay';
-import { context } from '../context/mainContext';
-import EditTeam from '../components/EditTeam';
+import { useDispatch, useSelector } from "react-redux";
+import AddTeam from "../components/AddTeam";
+import { getFromFirestore, stateChangeLogin } from "../firebase/fire";
+import TeamDisplay from "../components/TeamDisplay";
+import { context } from "../context/mainContext";
+import EditTeam from "../components/EditTeam";
 const AdminAccess = () => {
-  const accountDetails=useSelector((state:any)=>state.account)
-  
-  const [internalRoutes, setInternalRoutes]=useState('add-team')
-  // const [team, setTeam] = useState([] as any);
-  const ctx=useContext(context)
-const objToArray=(data:any)=>{
-  let keys=Object.keys(data)
-  let arr=keys.map((a:any)=>{
-    return data[a]
-  })
-  return arr
-}
+  const accountDetails = useSelector((state: any) => state.account);
 
-  const navigate = useNavigate()
-  useEffect(() => {
-    stateChangeLogin(() => {
-      getFromFirestore("team", (data: any) => {
-        const teamArray=objToArray(data)
-        ctx.setTeam(teamArray)
-      });
+  const [internalRoutes, setInternalRoutes] = useState("add-team");
+  // const [team, setTeam] = useState([] as any);
+  const ctx = useContext(context);
+  const objToArray = (data: any) => {
+    let keys = Object.keys(data);
+    let arr = keys.map((a: any) => {
+      return data[a];
     });
-  }, []);
+    return arr;
+  };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log();
+    stateChangeLogin((user:any) => {
+        if (user) {          
+          getFromFirestore("team", (data: any) => {
+            const teamArray = objToArray(data);
+            ctx.setTeam(teamArray);
+          });
+        } else {
+          navigate("/admin/login");
+        }
+     
+    });
+  }, [accountDetails]);
 
   // const token = localStorage.getItem("token")
   // useEffect(() => {
@@ -68,24 +74,40 @@ const objToArray=(data:any)=>{
   //     }
   //     )
 
-
   // }
 
-  return <>
-  <div className='min-h-[80vh] bg-slate-100'>
-    <button className="px-4 bg-white py-2  m-2 font-bold text-slate-600 rounded-md" onClick={()=>{setInternalRoutes('add-team')}}>add team</button>
-    <button className="px-4 bg-white py-2  m-2 font-bold text-slate-600 rounded-md" onClick={()=>{setInternalRoutes('edit-team')}}>edit team</button>
-{
-  internalRoutes=='add-team'?
- <AddTeam />
-  : internalRoutes=='edit-team'?<EditTeam /> :''
-}
-  </div>
-  </>
+  return (
+    <>
+      <div className="min-h-[80vh] bg-slate-100">
+        <button
+          className="px-4 bg-white py-2  m-2 font-bold text-slate-600 rounded-md"
+          onClick={() => {
+            setInternalRoutes("add-team");
+          }}
+        >
+          add team
+        </button>
+        <button
+          className="px-4 bg-white py-2  m-2 font-bold text-slate-600 rounded-md"
+          onClick={() => {
+            setInternalRoutes("edit-team");
+          }}
+        >
+          edit team
+        </button>
+        {internalRoutes == "add-team" ? (
+          <AddTeam />
+        ) : internalRoutes == "edit-team" ? (
+          <EditTeam />
+        ) : (
+          ""
+        )}
+      </div>
+    </>
+  );
 
-
-   
-    {/* <br />
+  {
+    /* <br />
     <form onSubmit={addMember}>
       Add a Member
       <br />
@@ -96,7 +118,8 @@ const objToArray=(data:any)=>{
       <input placeholder="profilePicture" name="profilePicture" type="file" onChange={handleChange} />
       <br />
       <button type="submit"> Add Member</button>
-    </form> */}
+    </form> */
+  }
 };
 
 export default AdminAccess;

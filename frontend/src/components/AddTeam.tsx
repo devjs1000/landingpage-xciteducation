@@ -11,23 +11,31 @@ const AdminAccess = () => {
   const [uploaded, setUploaded] = useState(true);
   const [img, setImg] = useState({} as any);
   const uploadData = () => {
-    let dataToUpload = {
-      name,
-      quote,
-      img,
-    };
-    uploadToFirestore("team", dataToUpload);
-    ctx.setTeam([...ctx.team, dataToUpload]);
-    setName('')
-    setQuote('')
-    setImg('')
+    if (!uploaded) return;
+    console.log(name!=='' && quote !=='' && selectedFile !=='');
+    
+    if (name && quote ) {
+      let dataToUpload = {
+        name,
+        quote,
+        img,
+      };
+      uploadToFirestore("team", dataToUpload);
+      ctx.setTeam([...ctx.team, dataToUpload]);
+      setName("");
+      setQuote("");
+      setImg("");
+    }
   };
   const handleFileUpload = (e: any) => {
     setUploaded(false);
+    console.log('upload started');
+    
     let file = e.target.files[0];
-    setSelectedFile(file);
     uploadImageToFirebase(file, (imgData: any) => {
       setUploaded(true);
+      console.log('uploaded');
+      
       setImg(imgData);
     });
   };
