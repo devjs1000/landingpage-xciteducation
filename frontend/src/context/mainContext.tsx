@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const context = createContext([] as any);
 
 export default function MainContext({ children }: { children: any }) {
+  const [team,setTeam]=useState([] as any)
   const [products, setProducts] = useState([
     {
       title:'Xcitedu',
@@ -31,20 +32,29 @@ export default function MainContext({ children }: { children: any }) {
       background: 3,
       baseline:'Foundations',
       punchline:'reshaping villages'
+
     },
+        {
+      title:'XcitEdu',
+      color: "#334155",
+      background: 4,
+      baseline:'Media House',
+      punchline:'reshaping tommorow'
+    }
+,
     {
       title:'XcitEdu',
       color: "#ef4444",
-      background: 4,
+      background: 5,
       baseline:'House Of Design',
       punchline:'An Interior Designing Sphere'
-    }
+    },
   ]);
   const [selected, setSelected] = useState(0);
   const [menuNav, setMenuNav] = useState(0);
   return (
     <context.Provider
-      value={{ products, setProducts, selected, setSelected, menuNav, setMenuNav}}
+      value={{ products, setProducts, selected, setSelected, menuNav, setMenuNav, team, setTeam}}
     >
       {children}
     </context.Provider>

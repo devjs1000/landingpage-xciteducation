@@ -167,8 +167,7 @@ svg {
 .footer-nav .link {
   transition: 0.3s;
   cursor: pointer;
-  padding-bottom: 0.2rem;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 .footer-nav .link:hover {
   /* transform: translateY(5px); */

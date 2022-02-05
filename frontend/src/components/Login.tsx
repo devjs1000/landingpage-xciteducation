@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../firebase/fire";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const locat=useLocation()
-  const accountDetails=useSelector((state:any)=>state.account)
+  const locat = useLocation();
+  const accountDetails = useSelector((state: any) => state.account);
   const handleLogin = (e: any) => {
     e.preventDefault();
     // fetch('http://localhost:8000/user/userLogin', {
@@ -24,23 +24,13 @@ const Login = () => {
     //   }
     //   )
     loginUser(email, password, (user: any) => {});
-
   };
 
-  useEffect(()=>{
-    if(accountDetails){
-      navigate('/admin/access')
-    }else{
-      alert('wrong password and email')
-    }
-  },[accountDetails])
   const togglePasswordView = () => {
     showPassword ? setShowPassword(false) : setShowPassword(true);
   };
   return (
     <div>
-      {!accountDetails? 
-      
       <form
         onSubmit={handleLogin}
         className="shadow-lg rounded-xl px-5 bg-white w-[20rem] h-[20rem] flex flex-wrap justify-start items-center"
@@ -91,8 +81,7 @@ const Login = () => {
         >
           login
         </button>
-      </form>:''
-}
+      </form>
     </div>
   );
 };

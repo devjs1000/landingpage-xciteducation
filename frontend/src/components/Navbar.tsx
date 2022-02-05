@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { context } from "../context/mainContext";
 import { useSelector, useDispatch } from "react-redux";
 import { stateChangeLogin } from "../firebase/fire";
@@ -7,53 +7,60 @@ import { accountAction } from "../redux/actions/loginAction";
 
 export default function Navbar() {
   const ctx = useContext(context);
-  const accountDetails=useSelector((state:any)=>state.account)
-  const dispatch=useDispatch()
-  useEffect(()=>{
-    stateChangeLogin((user:any)=>{
-      if(user){
-console.log('logged');
-dispatch(accountAction(user))
+  const loc=useLocation()
+  const dispatch = useDispatch();
 
-      }else{
-        console.log('not logged');
-        dispatch(accountAction({}))
+  const navigate=useNavigate()
+  useEffect(() => {
+    stateChangeLogin((user: any) => {
+      if (user) {
+        console.log("logged", loc.pathname);
+        if(loc.pathname=='/admin/login'){
+          navigate('/admin/access')
+        }
+        dispatch(accountAction(user));
+      } else {
+        console.log("not logged");
+        if(loc.pathname=='/admin/access'){
+          navigate('/admin/login')
+        }
+        dispatch(accountAction({}));
 
       }
-    })
-  }, [])
+    });
+  }, []);
   return (
-    <nav className="flex justify-between mx-2 py-2 shadow-lg" style={{zIndex:'1001 !important'}}>
+    <nav
+      className="flex justify-between mx-2 py-2 shadow-lg"
+      style={{ zIndex: "1001 !important" }}
+    >
       <h1
         className="bg-gray-700 text-white cursor-pointer p-2 text-xl text-center  mx-4 font-bold"
         style={{ width: "10rem" }}
       >
-        <Link to='/'>
-        XcitEducation
-        </Link>
+        <Link to="/">XcitEducation</Link>
       </h1>
 
       <div className="relative  w-auto flex text-gray-800 bg-white justify-end truncate font-bold">
-      <button className="  hover:bg-gray-100 px-2 sm-hide">
-         HOUSE OF DESIGN
-        </button>
+
         <button className="  hover:bg-gray-100 px-2   sm-hide">
-         TRAININGS
+          TRAININGS
         </button>
-        <button className=" sm-hide  px-2 hover:bg-gray-100">
-          INTERNSHIP
+        <button className=" sm-hide  px-2 hover:bg-gray-100">INTERNSHIP</button>
+                <button className=" sm-hide px-2 hover:bg-gray-100">FOUNDATIONS</button>
+                        <button className=" sm-hide  px-2 hover:bg-gray-100">MEDIA HOUSE</button>
+
+        <button className=" sm-hide px-2 hover:bg-gray-100">CAPITALS</button>
+
+                <button className="  hover:bg-gray-100 px-2 sm-hide">
+          HOUSE OF DESIGN
         </button>
-        <button className=" sm-hide px-2 hover:bg-gray-100">
-          CAPITALS
-        </button>
-        <button className=" sm-hide px-2 hover:bg-gray-100">
-         FOUNDATIONS
-        </button>
+
         <button
           className="text-gray-800 text-xl  mx-2 sm-show "
           onClick={() => {
             ctx.setMenuNav(1);
-            document.body.style.overflow='hidden'
+            document.body.style.overflow = "hidden";
           }}
         >
           <svg

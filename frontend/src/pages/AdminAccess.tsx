@@ -1,17 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Navigate, useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import AddTeam from '../components/addTeam'
+import { useDispatch, useSelector } from 'react-redux';
+import AddTeam from '../components/AddTeam'
+import { getFromFirestore, stateChangeLogin } from '../firebase/fire';
+import TeamDisplay from '../components/TeamDisplay';
+import { context } from '../context/mainContext';
+import EditTeam from '../components/EditTeam';
 const AdminAccess = () => {
   const accountDetails=useSelector((state:any)=>state.account)
+  
   const [internalRoutes, setInternalRoutes]=useState('add-team')
-  const navigate = useNavigate()
+  // const [team, setTeam] = useState([] as any);
+  const ctx=useContext(context)
+const objToArray=(data:any)=>{
+  let keys=Object.keys(data)
+  let arr=keys.map((a:any)=>{
+    return data[a]
+  })
+  return arr
+}
 
-  useEffect(()=>{
-    if(!accountDetails){
-navigate('/admin/login')
-    }
-  },[])
+  const navigate = useNavigate()
+  useEffect(() => {
+    stateChangeLogin(() => {
+      getFromFirestore("team", (data: any) => {
+        const teamArray=objToArray(data)
+        ctx.setTeam(teamArray)
+      });
+    });
+  }, []);
+
   // const token = localStorage.getItem("token")
   // useEffect(() => {
 
@@ -54,12 +72,13 @@ navigate('/admin/login')
   // }
 
   return <>
-  <div className='min-h-[80vh]'>
-    <button className="px-4 py-2 shadow-lg m-2 font-bold text-slate-700 rounded-md" onClick={()=>{setInternalRoutes('add-team')}}>add team</button>
-    <button className="px-4 py-2 shadow-lg m-2 font-bold text-slate-700 rounded-md" onClick={()=>{setInternalRoutes('edit-team')}}>edit team</button>
+  <div className='min-h-[80vh] bg-slate-100'>
+    <button className="px-4 bg-white py-2  m-2 font-bold text-slate-600 rounded-md" onClick={()=>{setInternalRoutes('add-team')}}>add team</button>
+    <button className="px-4 bg-white py-2  m-2 font-bold text-slate-600 rounded-md" onClick={()=>{setInternalRoutes('edit-team')}}>edit team</button>
 {
   internalRoutes=='add-team'?
-  <AddTeam />:''
+ <AddTeam />
+  : internalRoutes=='edit-team'?<EditTeam /> :''
 }
   </div>
   </>

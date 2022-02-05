@@ -1,5 +1,5 @@
 const initialState = {
-    account:{}
+  account: {},
 };
 
 const reducer = (state: typeof initialState = initialState, action: any) => {

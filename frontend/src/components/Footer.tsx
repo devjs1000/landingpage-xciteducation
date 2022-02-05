@@ -14,8 +14,8 @@ export default function () {
         <Link to="/careers" onClick={goToTop} className="text-center text-gray-100 link">
           CAREERS
         </Link>
-        <Link to="/blogs" onClick={goToTop} className="text-center text-gray-100 link">
-          BLOGS
+        <Link to="/our-team" onClick={goToTop} className="text-center text-gray-100 link">
+        OUR TEAM
         </Link>
         <Link to="/privacy-policy" onClick={goToTop} className="text-center text-gray-100 link">
           PRIVACY POLICY

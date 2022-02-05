@@ -5,9 +5,10 @@ import trainingImg from "../../img/training.svg";
 import feelingProudImg from "../../img/feelingProud.svg";
 import foundationImg from "../../img/foundation.svg";
 import designImg from "../../img/design.svg";
+import mediaImg from "../../img/media.svg";
 
 export default function Dial(props: any) {
-  const backgrounds: any[] = [barrierBreakingImg, trainingImg, feelingProudImg, foundationImg, designImg];
+  const backgrounds: any[] = [barrierBreakingImg, trainingImg, feelingProudImg, foundationImg,mediaImg, designImg];
   const ctx = useContext(context);
 const select=(themeNumber:number)=>{
   ctx.setSelected(themeNumber)
@@ -27,7 +28,8 @@ const select=(themeNumber:number)=>{
           <button className="bg-teal-400 ml-1 animate-up rounded-full border-4 border-white shadow p-2 h-8 w-8" onClick={()=>{select(1)}}></button>
           <button className="bg-gray-800 ml-1 animate-up rounded-full border-4 border-white shadow p-2 h-8 w-8" onClick={()=>{select(2)}}></button>
           <button className="bg-yellow-200 ml-1 animate-up 1 rounded-full border-4 border-white shadow p-2 h-8 w-8" onClick={()=>{select(3)}}></button>
-          <button className="bg-red-400 ml-1 animate-up rounded-full border-4 border-white shadow p-2 h-8 w-8" onClick={()=>{select(4)}}></button>
+          <button className="bg-slate-700 ml-1 animate-up rounded-full border-4 border-white shadow p-2 h-8 w-8" onClick={()=>{select(4)}}></button>
+          <button className="bg-red-400 ml-1 animate-up rounded-full border-4 border-white shadow p-2 h-8 w-8" onClick={()=>{select(5)}}></button>
 
 
         </div>

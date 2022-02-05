@@ -3,10 +3,10 @@ import foundationImg from "../../img/foundation.svg";
 import trainingImg from "../../img/training.svg";
 import internshipImg from "../../img/barrierBreaking.svg";
 import designImg from "../../img/design.svg";
-import policyImg from "../../img/terms.svg";
+import mediaImg from "../../img/media.svg";
+
 import DialBox from "../components/DialBox";
 import Card from "../components/Card";
-import Team from '../pages/Team'
 export default () => {
   return (
     <>
@@ -19,7 +19,6 @@ export default () => {
           <div className="bg-slate-50 flex-wrap mx-auto px-10 sm:px-32 pt-[20px] bg-no-repeat ">
             <h1 className="text-center flex justify-center  w-full  text-4xl sm:text-6xl mt-12  font-semibold font-sans text-slate-700">
               <span className="">
-                {" "}
                 Welcome to
                 <span className="text-blue-500"> Xcitedu!</span>
               </span>
@@ -46,7 +45,7 @@ export default () => {
             </div>
           </div>
           <div
-            className="bg-white  py-[4rem] flex flex-wrap justify-center"
+            className="bg-white  py-[4rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
             id="first-about-card"
           >
             <Card
@@ -82,14 +81,12 @@ export default () => {
               description=" Add a flavor of design at your workplace or life!"
             />
             <Card
-              title="Blogging"
-              img={policyImg}
-              description=" Have an Innate desire to write what you feel, just pen it down with us!"
+              title="Media House"
+              img={mediaImg}
+              description=" Have an Innate desire to say what you feel, join us!"
             />
           </div>
         </div>
-        <h1 className="text-6xl font-bold text-center text-gray-700">Our Team</h1>
-        <Team />
       </section>
     </>
   );

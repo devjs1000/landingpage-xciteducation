@@ -3,17 +3,19 @@ import Loading from "./components/Loading";
 import Navbar from "./components/Navbar";
 import { context } from "./context/mainContext";
 import Home from "./components/Home";
-import { Routes, Route } from "react-router-dom";
-import About from "./pages/About";
-import Notfound from "./components/Notfound";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import Refund from "./pages/Refund";
-import Equal from "./pages/Equal";
-import Admin from './pages/Admin'
 import AdminAccess from "./pages/AdminAccess";
+import { Routes, Route } from "react-router-dom";
+import Team from './pages/Team'
+const About =lazy(()=>import( "./pages/About"))
+const Notfound =lazy(()=>import( "./components/Notfound"))
+const Privacy =lazy(()=>import( "./pages/Privacy"))
+const Terms =lazy(()=>import( "./pages/Terms"))
+const Refund =lazy(()=>import( "./pages/Refund"))
+const Equal =lazy(()=>import( "./pages/Equal"))
+const Admin = lazy(()=>import('./pages/Admin'))
 const Menubar = lazy(() => import("./components/Menubar"));
 const Footer = lazy(() => import("./components/Footer"));
+// const Team = lazy(() => import("./pages/Team"));
 
 function App() {
   const ctx = useContext(context);
@@ -21,6 +23,7 @@ function App() {
   return (
     <div className="App mx-auto ">
       <Navbar />
+      <Suspense fallback={<Loading />}>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,9 +35,9 @@ function App() {
         <Route path='/equal-opportunity' element={<Equal />} />
         <Route path='/admin/login'  element={<Admin />} />
         <Route path='/admin/access' element={<AdminAccess />} />
+        <Route path='/our-team' element={<Team />} />
 
       </Routes>
-      <Suspense fallback={<Loading />}>
         <Menubar />
       </Suspense>
 
