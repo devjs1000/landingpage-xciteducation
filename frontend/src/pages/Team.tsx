@@ -25,15 +25,18 @@ const objToArray=(data:any)=>{
 
 
     return (
-        <div className='mt-12 min-h-[70vh]'>
-        <h1 className='text-6xl font-semibold text-gray-800 text-center '>Our Team</h1>
-            <div className="grid grid-rows-auto grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  mx-20 my-5  gap-2">
+        <div className=' min-h-[70vh] bg-slate-100 py-5'>
+        <h1 className='text-8xl font-semibold my-12 text-slate-700 text-center  '>
+            Our
+            <span className="text-teal-500"> Team</span>
+            </h1>
+            <div className="grid grid-rows-auto text-center grid-cols-1 place-items-center sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  mx-auto my-5  gap-2">
             {team.map((a:any, index:number)=>{
                 if(index>=show){
                     return ''
                 }
                 return (
-                    <div key={index} className="mx-auto">
+                    <div key={index} className="text-center">
                         <TeamCard name={a.name} quote={a.quote} img={a.img.url}/>
                     </div>
                 )
@@ -52,7 +55,7 @@ const objToArray=(data:any)=>{
                 )
             })}
             { 
-                blurredControls && <div className="col-span-3 blurred flex justify-center items-center absolute top-0 w-full p-5 h-60 shadow-lg ">
+                blurredControls && <div className="col-span-3 blurred bg-slate-100 flex justify-center items-center absolute top-0 w-full p-5 h-60 shadow-lg ">
                 <button onClick={()=>{
                     document.querySelector('.blurry-deck')?.classList.toggle('h-60')
                     setBlurredControl(false)

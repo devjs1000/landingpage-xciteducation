@@ -6,16 +6,18 @@ const [name, setName]=useState('name')
 
   return (
     <>
-      <div className=" px-3 pt-12 my-2 rounded-xl pt-5 flex flex-wrap bg-slate-100 w-[300px] h-[400px] shadow-md hover:shadow-lg cursor-pointer">
-        <img
-          src={props.img}
+      <div className="   my-2 rounded-xl  flex flex-wrap bg-white w-[300px] h-[400px] shadow-md hover:shadow-lg cursor-pointer">
+       <div className='w-full bg-teal-300 rounded-t-xl h-[250px] overflow-hidden'>
+       <img
+          src={props.img} draggable={false}
           alt="training"
-          className="w-[200px] mx-auto p-2 bg-teal-500 rounded-full h-[200px] object-cover"
-          loading="lazy"
+          className="w-full mx-auto select-none rounded-t-xl  transition-[.5s] hover:scale-[1.1] bg-teal-500  h-[250px] object-cover"
         />
-        <div className='lg:w-full w-auto'>
+
+       </div>
+        <div className=' w-full'>
           <h3
-            className="text-xl ml-2 w-full md:text-xl lg:text-2xl lg:mb-[8px] font-semibold mb-[2px] mt-0 md:my-[8px] text-center"
+            className="text-xl m-0 w-full md:text-xl lg:text-2xl lg:mb-[8px] font-semibold  mt-0 md:my-[8px] text-center"
             style={{ color: props.hColor }}
           >
             {props.name}
@@ -25,7 +27,7 @@ const [name, setName]=useState('name')
 
           </div>
  */}
-          <p className="break-all h-12 w-full overflow-x-hidden overflow-y-auto  ml-2  text-center mb-0 mt-0 text-slate-700 text-sm md:text-base font-semibold ">
+          <p className="break-all m-0 text-teal-500 h-12 w-full overflow-x-hidden overflow-y-auto    text-center  text-slate-700 text-sm md:text-base font-semibold ">
             {props.quote}
 
           </p>

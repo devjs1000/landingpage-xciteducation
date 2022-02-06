@@ -12,9 +12,8 @@ const AdminAccess = () => {
   const [img, setImg] = useState({} as any);
   const uploadData = () => {
     if (!uploaded) return;
-    console.log(name!=='' && quote !=='' && selectedFile !=='');
     
-    if (name && quote ) {
+    if (name!=='' && quote !=='' && selectedFile !=='' ) {
       let dataToUpload = {
         name,
         quote,
@@ -25,6 +24,7 @@ const AdminAccess = () => {
       setName("");
       setQuote("");
       setImg("");
+      setSelectedFile('')
     }
   };
   const handleFileUpload = (e: any) => {
@@ -35,7 +35,7 @@ const AdminAccess = () => {
     uploadImageToFirebase(file, (imgData: any) => {
       setUploaded(true);
       console.log('uploaded');
-      
+      setSelectedFile(file)
       setImg(imgData);
     });
   };

@@ -35,9 +35,9 @@ export default function () {
       </div>
 
       <div className=" bg-gray-50 flex items-center flex-wrap justify-around ">
-        <div className="bg-gray-800  text-center text-gray-50 w-full">
+        {/* <div className="bg-gray-800  text-center text-gray-50 w-full">
           Xcitedu Software Solutions Pvt. Ltd, Delhi
-        </div>
+        </div> */}
         <div>© Copyright 2022. All Rights Reserved.</div>
       </div>
     </footer>
