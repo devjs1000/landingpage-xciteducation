@@ -45,7 +45,7 @@ export default () => {
             </div>
           </div>
           <div
-            className="bg-white  py-[4rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
+            className="bg-white  py-[4rem] grid mx-auto bg-slate-100  place-items-center place-content-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
             id="first-about-card"
           >
             <Card

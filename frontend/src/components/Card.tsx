@@ -1,9 +1,11 @@
+import { ArrowBarRight } from "react-bootstrap-icons";
+cd
 export default (props:any)=>{
     console.log(props.hColor);
     
     return (
         <>
-           <div className="  md:mr-[32px] p-3 md:p-4 w-[90%] lg:w-[368px] xl:w-[464px] lg:h-[235px]  bg-slate-100 flex items-center rounded-2xl relative mt-[30px] shadow-md hover:shadow-lg cursor-pointer">
+           <div className=" shadow-md rounded-xl mt-2  bg-white p-4 hover:shadow-xl mx-auto w-[20rem]">
                 <img
                   src={props.img}
                   alt="training"
@@ -16,9 +18,9 @@ export default (props:any)=>{
                   <p className='text-left mb-0 mt-0 text-slate-700 text-sm md:text-base font-semibold '>
                    {props.description}
                   </p>
-                  <a href="#" className="text-cyan-600 font-semibold text-sm ">
+                  <a href="#" className="text-cyan-600 flex font-semibold text-sm ">
                     Explore more
-                    <i className="fas fa-arrow-right pl-1 "></i>
+                  <ArrowBarRight />
                   </a>
                 </div>
               </div>

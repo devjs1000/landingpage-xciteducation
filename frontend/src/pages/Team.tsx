@@ -30,7 +30,7 @@ const objToArray=(data:any)=>{
             Our
             <span className="text-teal-500"> Team</span>
             </h1>
-            <div className="grid grid-rows-auto text-center grid-cols-1 place-items-center sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  mx-auto my-5  gap-2">
+            <div className="grid grid-rows-auto text-center grid-cols-1 place-items-center place-content-center sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  mx-auto my-5  gap-2">
             {team.map((a:any, index:number)=>{
                 if(index>=show){
                     return ''
@@ -43,7 +43,8 @@ const objToArray=(data:any)=>{
             })}
 
             </div>
-            <div className="blurry-deck h-60 overflow-hidden  relative grid grid-rows-autogrid-cols-1 lg:grid-cols-2 xl:grid-cols-3  mx-20 my-8  gap-2">
+            {team.length>show && 
+            <div className="blurry-deck h-60 overflow-hidden place-items-center relative grid grid-rows autogrid-cols-1 lg:grid-cols-2 xl:grid-cols-3  mx-20 my-8  gap-2">
             {team.map((a:any, index:number)=>{
                 if(index<=show){
                     return ''
@@ -64,6 +65,8 @@ const objToArray=(data:any)=>{
             }
             
             </div>
+            }
+            
         </div>
     )
 }

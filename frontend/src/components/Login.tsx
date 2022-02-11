@@ -2,28 +2,31 @@ import { useState } from "react";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../firebase/fire";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {accountAction} from '../redux/actions/loginAction'
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch=useDispatch()
   const locat = useLocation();
   const accountDetails = useSelector((state: any) => state.account);
   const handleLogin = (e: any) => {
     e.preventDefault();
-    // fetch('http://localhost:8000/user/userLogin', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ email, password }),
-    //   headers: { 'Content-Type': 'application/json' },
-    // }).then(res => res.json()).
-    //   then(data => {
-    //     console.log(data);
-    //     localStorage.setItem("token", data.token)
-    //     navigate("/admin/access")
-    //   }
-    //   )
-    loginUser(email, password, (user: any) => {});
+    loginUser(email, password, (user: any) => {
+      try {
+        if(user.user.accessToken.length>10){     
+          dispatch(accountAction(user))
+          navigate('/admin/access')
+        }
+      } catch (error) {
+        console.log('password is wrong');
+        console.log(user);
+        
+      }
+     
+    });
   };
 
   const togglePasswordView = () => {

@@ -41,9 +41,10 @@ export const createUser = (email: any, password: any, func: Function) => {
   }
 };
 
-export const loginUser = (email: any, password: any, func: Function) => {
+export const loginUser = async (email: any, password: any, func: Function) => {
   try {
-    signInWithEmailAndPassword(auth, email, password);
+    const res=await signInWithEmailAndPassword(auth, email, password);
+    func(res)
   } catch (err: any) {
     func(err.message);
     console.log(err);

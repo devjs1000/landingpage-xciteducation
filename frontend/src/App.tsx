@@ -3,7 +3,6 @@ import Loading from "./components/Loading";
 import Navbar from "./components/Navbar";
 import { context } from "./context/mainContext";
 import Home from "./components/Home";
-import AdminAccess from "./pages/AdminAccess";
 import { Routes, Route } from "react-router-dom";
 import Team from './pages/Team'
 const About =lazy(()=>import( "./pages/About"))
@@ -15,6 +14,8 @@ const Equal =lazy(()=>import( "./pages/Equal"))
 const Admin = lazy(()=>import('./pages/Admin'))
 const Menubar = lazy(() => import("./components/Menubar"));
 const Footer = lazy(() => import("./components/Footer"));
+// import AdminAccess from "./pages/AdminAccess";
+const AdminAccess=lazy(()=>import('./pages/AdminAccess'))
 // const Team = lazy(() => import("./pages/Team"));
 
 function App() {
