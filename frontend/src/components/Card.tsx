@@ -3,7 +3,7 @@ export default (props:any)=>{
     
     return (
         <>
-           <div className="  md:mr-[32px] p-3 md:p-4 w-[90%] lg:w-[368px] xl:w-[464px] lg:h-[235px]  bg-slate-100 flex items-center rounded-2xl relative mt-[30px] shadow-md hover:shadow-lg cursor-pointer">
+           <div className="border-2  md:mr-[32px] p-3 md:p-4 w-[90%] lg:w-[300px] xl:w-[435px] lg:h-[235px]  bg-slate-200 flex items-center rounded-2xl relative mt-[30px] shadow-md hover:shadow-lg cursor-pointer">
                 <img
                   src={props.img}
                   alt="training"

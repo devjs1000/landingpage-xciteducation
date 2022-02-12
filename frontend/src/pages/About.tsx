@@ -45,16 +45,18 @@ export default () => {
             </div>
           </div>
           <div
-            className="bg-white  py-[4rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
-            id="first-about-card"
+            className="bg-white  py-[4rem] px-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
+            id="first-about-card border-2"
           >
             <Card
+             
               title="Internships"
               img={internshipImg}
               hColor="#f97316"
               description="Get a real time experience in different fields with us ."
             />
             <Card
+         
               title="Trainings"
               img={trainingImg}
               hColor="#10b981"
@@ -62,6 +64,7 @@ export default () => {
               Got a sensation to learn something new or upskill yourself ? Try us !"
             />
             <Card
+       
               title="Capitals"
               img={capitalImg}
               hColor="#111827"
@@ -69,19 +72,23 @@ export default () => {
              "
             />
             <Card
+    
               title="Foundations"
               img={foundationImg}
               hColor="#facc15"
               description="  Helping Unprivileged  students gain access to education."
             />
             <Card
+
               title="House Of Design"
               hColor="#ef4444"
               img={designImg}
               description=" Add a flavor of design at your workplace or life!"
             />
             <Card
+
               title="Media House"
+              hColor="#ef4444"
               img={mediaImg}
               description=" Have an Innate desire to say what you feel, join us!"
             />
