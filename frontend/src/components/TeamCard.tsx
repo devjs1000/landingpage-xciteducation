@@ -3,36 +3,19 @@ import { useState } from 'react';
 export default (props: any) => {
 const [mailId, setMailId]=useState('mail@mail.com')
 const [name, setName]=useState('name')
-
+console.log(props)
   return (
-    <>
-      <div className="   my-2 rounded-xl  flex flex-wrap bg-white w-[300px] h-[400px] shadow-md hover:shadow-lg cursor-pointer">
-       <div className='w-full bg-teal-300 rounded-t-xl h-[250px] overflow-hidden'>
-       <img
-          src={props.img} draggable={false}
-          alt="training"
-          className="w-full mx-auto select-none rounded-t-xl  transition-[.5s] hover:scale-[1.1] bg-teal-500  h-[250px] object-cover"
-        />
+    <div className="w-[15rem]  h-[15rem] bg-white  bg-cover bg-center rounded-[1rem]" style={{backgroundImage:`url(${props.img})`}}>
 
-       </div>
-        <div className=' w-full'>
-          <h3
-            className="text-xl m-0 w-full md:text-xl lg:text-2xl lg:mb-[8px] font-semibold  mt-0 md:my-[8px] text-center"
-            style={{ color: props.hColor }}
-          >
-            {props.name}
-          </h3>
-          {/* <div className='text-center'>
-          <a href={`mailto:${mailId}?body='hello ${name}! `} className="text-green-500 ">mail@mail</a>
+<div className='hover:bg-[rgba(0,0,0,.5)] h-full p-4   backdrop-blur-[0px] hover:backdrop-blur-[10px] transition-all rounded-[1rem]'>
+<div className='text-sm text-white h-full opacity-0 hover:opacity-100 text-justify overflow-auto'>
+{props.quote}
+</div>
+<div className='rounded-xl hover:animate-pulse cursor-pointer absolute bottom-0 px-4 bg-teal-600 text-white font-bold mb-2 text-xl'>
+{props.name.toUpperCase()}
+</div>
 
-          </div>
- */}
-          <p className="break-all m-0 text-teal-500 h-12 w-full overflow-x-hidden overflow-y-auto    text-center  text-slate-700 text-sm md:text-base font-semibold ">
-            {props.quote}
-
-          </p>
-        </div>
-      </div>
-    </>
+</div>
+    </div>
   );
 };

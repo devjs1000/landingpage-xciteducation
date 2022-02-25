@@ -1,8 +1,7 @@
 import { ArrowBarRight } from "react-bootstrap-icons";
-cd
 export default (props:any)=>{
     console.log(props.hColor);
-    
+
     return (
         <>
            <div className=" shadow-md rounded-xl mt-2  bg-white p-4 hover:shadow-xl mx-auto w-[20rem]">
