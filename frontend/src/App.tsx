@@ -12,7 +12,7 @@ const Terms =lazy(()=>import( "./pages/Terms"))
 const Refund =lazy(()=>import( "./pages/Refund"))
 const Equal =lazy(()=>import( "./pages/Equal"))
 const Admin = lazy(()=>import('./pages/Admin'))
-const Menubar = lazy(() => import("./components/Menubar"));
+const SideBar = lazy(() => import("./components/SideBar"));
 const Footer = lazy(() => import("./components/Footer"));
 // import AdminAccess from "./pages/AdminAccess";
 const AdminAccess=lazy(()=>import('./pages/AdminAccess'))
@@ -39,7 +39,7 @@ function App() {
         <Route path='/our-team' element={<Team />} />
 
       </Routes>
-        <Menubar />
+        <SideBar />
       </Suspense>
 
       <Suspense fallback={<Loading />}>

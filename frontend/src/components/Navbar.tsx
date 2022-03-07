@@ -7,21 +7,21 @@ import { accountAction } from "../redux/actions/loginAction";
 
 export default function Navbar() {
   const ctx = useContext(context);
-  const loc=useLocation()
+  const loc = useLocation()
   const dispatch = useDispatch();
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   useEffect(() => {
     stateChangeLogin((user: any) => {
       if (user) {
         console.log("logged", loc.pathname);
-        if(loc.pathname=='/admin/login'){
+        if (loc.pathname == '/admin/login') {
           navigate('/admin/access')
         }
         dispatch(accountAction(user));
       } else {
         console.log("not logged");
-        if(loc.pathname=='/admin/access'){
+        if (loc.pathname == '/admin/access') {
           navigate('/admin/login')
         }
         dispatch(accountAction({}));
@@ -41,20 +41,18 @@ export default function Navbar() {
         <Link to="/">XcitEducation</Link>
       </h1>
 
-      <div className="relative  w-auto flex text-gray-800 bg-white justify-end truncate font-bold">
+      <div className="relative     text-gray-800 bg-white flex  items-center justify-end overflow-auto w-[60vw] ">
 
-        <button className="  hover:bg-gray-100 px-2   sm-hide">
+        <a href="https://trainings.xcitedu.com" className="  text-slate-700 hover:text-slate-900 py-2   text-center  hover:bg-gray-100 px-2   sm-hide">
           TRAININGS
-        </button>
-        <button className=" sm-hide  px-2 hover:bg-gray-100">INTERNSHIP</button>
-                <button className=" sm-hide px-2 hover:bg-gray-100">FOUNDATIONS</button>
-                        <button className=" sm-hide  px-2 hover:bg-gray-100">MEDIA HOUSE</button>
-
-        <button className=" sm-hide px-2 hover:bg-gray-100">CAPITALS</button>
-
-                <button className="  hover:bg-gray-100 px-2 sm-hide">
+        </a>
+        <a href="https://internships.xcitedu.com" className="  text-slate-700 hover:text-slate-900 py-2 whitespace-nowrap   text-center sm-hide  px-2 hover:bg-gray-100">INTERNSHIP</a>
+        <a href="https://foundations.xcitedu.com" className="  text-slate-700 hover:text-slate-900 py-2 whitespace-nowrap   text-center sm-hide px-2 hover:bg-gray-100">FOUNDATIONS</a>
+        <a href="https://media.xcitedu.com" className="  text-slate-700 hover:text-slate-900 py-2 whitespace-nowrap   text-center sm-hide  px-2 hover:bg-gray-100">MEDIA HOUSE</a>
+        <a href="https://capitals.xcitedu.com" className="  text-slate-700 hover:text-slate-900 py-2 whitespace-nowrap   text-center sm-hide px-2 hover:bg-gray-100">CAPITALS</a>
+        <a href="https://designs.xcitedu.com" className="  text-slate-700 hover:text-slate-900 py-2 whitespace-nowrap   text-center  hover:bg-gray-100 px-2 sm-hide">
           HOUSE OF DESIGN
-        </button>
+        </a>
 
         <button
           className="text-gray-800 text-xl  mx-2 sm-show "

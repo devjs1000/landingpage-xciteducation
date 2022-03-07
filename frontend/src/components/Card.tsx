@@ -17,7 +17,7 @@ export default (props:any)=>{
                   <p className='text-left mb-0 mt-0 text-slate-700 text-sm md:text-base font-semibold '>
                    {props.description}
                   </p>
-                  <a href="#" className="text-cyan-600 flex font-semibold text-sm ">
+                  <a href={props.link} className="text-cyan-600 flex font-semibold text-sm ">
                     Explore more
                   <ArrowBarRight />
                   </a>

@@ -5,7 +5,7 @@ import CounterContainer from "./CounterContainer";
 export default ()=>{
   return (
     <div className=' '>
-            <main className="flex sm-wrap  m-6 h-auto sm:h-[80vh]" >
+            <main className="flex sm-wrap  m-6 h-auto sm:min-h-[70vh] " >
 <div className='w-full'>
 <CounterContainer />
 

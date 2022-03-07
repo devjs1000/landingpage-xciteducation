@@ -5,16 +5,12 @@ import internshipImg from "../../img/barrierBreaking.svg";
 import designImg from "../../img/design.svg";
 import mediaImg from "../../img/media.svg";
 
-import DialBox from "../components/DialBox";
 import Card from "../components/Card";
 export default () => {
   return (
     <>
       <section className=" w-[100%]">
         <div className=" ">
-          {/* <div className="absolute right-0">
-          <DialBox/>
-          </div> */}
 
           <div className="bg-slate-50 flex-wrap mx-auto px-10 sm:px-32 pt-[20px] bg-no-repeat ">
             <h1 className="text-center flex justify-center  w-full  text-4xl sm:text-6xl mt-12  font-semibold font-sans text-slate-700">
@@ -52,12 +48,15 @@ export default () => {
               title="Internships"
               img={internshipImg}
               hColor="#f97316"
+              link="https://internships.xcitedu.com"
               description="Get a real time experience in different fields with us ."
             />
             <Card
               title="Trainings"
               img={trainingImg}
               hColor="#10b981"
+              link="https://trainings.xcitedu.com"
+
               description="  
               Got a sensation to learn something new or upskill yourself ? Try us !"
             />
@@ -65,6 +64,8 @@ export default () => {
               title="Capitals"
               img={capitalImg}
               hColor="#111827"
+              link="https://capitals.xcitedu.com"
+
               description="One-stop solution for your startup incubation .
              "
             />
@@ -72,17 +73,23 @@ export default () => {
               title="Foundations"
               img={foundationImg}
               hColor="#facc15"
+              link="https://foundations.xcitedu.com"
+
               description="  Helping Unprivileged  students gain access to education."
             />
             <Card
               title="House Of Design"
               hColor="#ef4444"
               img={designImg}
+              link="https://designs.xcitedu.com"
+
               description=" Add a flavor of design at your workplace or life!"
             />
             <Card
               title="Media House"
               img={mediaImg}
+              link="https://media.xcitedu.com"
+
               description=" Have an Innate desire to say what you feel, join us!"
             />
           </div>

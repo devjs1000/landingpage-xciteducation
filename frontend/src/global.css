@@ -184,7 +184,7 @@ svg {
 .show-menu {
   width: 80vw !important;
   transition: 0.3s;
-  opacity: 0.9;
+  background-color: rgba(255, 255,255, 0.8);
   right: 0;
 }
 .hide-menu {
